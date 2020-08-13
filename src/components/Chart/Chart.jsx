@@ -7,12 +7,7 @@ function Chart(props) {
   const [dailyData, setDailyData] = useState([]);
 
   console.log("Chart country= " + props.selectCountry);
-  const {
-    confirmed,
-    recovered,
-    deaths,
-    lastUpdate,
-  } = props.formPosts.singleData;
+  const { confirmed, recovered, deaths } = props.formPosts.singleData;
   console.log(confirmed);
 
   useEffect(() => {
@@ -74,7 +69,7 @@ function Chart(props) {
 
   return (
     <div className={styles.container}>
-      {props.selectCountry ? BarChart : LineChart}
+      {props.selectCountry !== "global" ? BarChart : LineChart}
     </div>
   );
 }

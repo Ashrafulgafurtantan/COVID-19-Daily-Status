@@ -13,8 +13,7 @@ function Cards(props) {
     deaths,
     lastUpdate,
   } = props.formPosts.singleData;
-  //console.log(props.formPosts.singleData);
-  // console.log(lastUpdate);
+  console.log(confirmed);
 
   if (!confirmed) {
     return "Loading...";

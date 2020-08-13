@@ -1,26 +1,26 @@
 import React, { useEffect } from "react";
 import styles from "./App.module.css";
 import { Cards, Chart, CountryPicker } from "./components";
-import axios from "axios";
+//import axios from "axios";
 import image from "./images/image.png";
-//import { fetchData } from "./api/index";
+import { fetchData } from "./api/index";
 function App() {
   const [posts, setPosts] = React.useState({
     singleData: {},
   });
   const [requestData, setRequestData] = React.useState(new Date());
-  const [selectCountry, setSelectCountry] = React.useState("");
+  const [selectCountry, setSelectCountry] = React.useState("global");
   function handleCountry(count) {
     console.log(count);
     setSelectCountry(count);
     console.log(selectCountry.length);
     setRequestData(new Date());
   }
-
+  /*
   useEffect(() => {
     axios
       .get(
-        selectCountry !== "global"
+        selectCountry !== "global" && selectCountry
           ? `https://covid19.mathdro.id/api/countries/${selectCountry}`
           : "https://covid19.mathdro.id/api"
       )
@@ -40,6 +40,22 @@ function App() {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [requestData]);
   // }, []);
+  */
+
+  //........................TEST......................//
+
+  useEffect(() => {
+    const fetchAPI = async () => {
+      const modifiedData = await fetchData(selectCountry);
+
+      setPosts({ singleData: modifiedData });
+    };
+
+    fetchAPI();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [requestData]);
+
+  //....................................................//
   return (
     <div className={styles.container}>
       <img alt="Corona.png" src={image} className={styles.image} />

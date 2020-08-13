@@ -1,10 +1,18 @@
 import axios from "axios";
 
-export const fetchData = async () => {
+export const fetchData = async (selectCountry) => {
   try {
-    const response = await axios.get("https://covid19.mathdro.id/api");
+    const response = await axios.get(
+      selectCountry !== "global" && selectCountry
+        ? `https://covid19.mathdro.id/api/countries/${selectCountry}`
+        : "https://covid19.mathdro.id/api"
+    );
+    const {
+      data: { confirmed, recovered, deaths, lastUpdate },
+    } = response;
 
-    return response;
+    const modifiedData = { confirmed, recovered, deaths, lastUpdate };
+    return modifiedData;
   } catch (err) {
     console.log(err);
   }
