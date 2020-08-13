@@ -16,7 +16,7 @@ function CountryPicker(props) {
   return (
     <FormControl className={styles.formControl}>
       <NativeSelect
-        defaultValue=""
+        defaultValue="global"
         onChange={(event) => {
           props.onPick(event.target.value);
         }}
