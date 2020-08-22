@@ -28,8 +28,11 @@ function Chart(props) {
             data: dailyData.map(({ confirmed }) => confirmed),
             label: "Infected",
             borderColor: "#3333ff",
+            backgroundColor: "rgba(0,0,255,0.5)",
+
             fill: true,
           },
+
           {
             data: dailyData.map(({ deaths }) => deaths),
             label: "Deaths",
@@ -57,11 +60,12 @@ function Chart(props) {
           },
         ],
       }}
-      Option={{
-        legend: { display: false },
+      options={{
+        legend: { display: true },
         title: {
           display: true,
           text: `Current state in ${props.selectCountry}`,
+          fontSize: 25,
         },
       }}
     />

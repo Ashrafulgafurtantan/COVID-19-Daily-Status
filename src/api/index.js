@@ -24,6 +24,7 @@ export const fetchDailyData = async () => {
       confirmed: dailyData.confirmed.total,
       deaths: dailyData.deaths.total,
       date: dailyData.reportDate,
+      recovered: dailyData.recovered.total,
     }));
     return modifiedData;
   } catch (err) {
